@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 export interface ITodo {
   id:number,
@@ -23,15 +23,15 @@ export const slice = createSlice({
   name: 'todos',
   initialState,
   reducers: {
-    addTodo: (state, action) => {
+    addTodo: (state:ITodo[], action) => {
       const { id, text } = action.payload;
       state.push({ id, title: text, complete: false });
     },
-    deleteTodo: (state, action) => {
+    deleteTodo: (state, action:PayloadAction<number>) => {
       const id:number = action.payload;
       return state.filter((e) => e.id !== id);
     },
-    completeTodo : (state,action) =>{
+    completeTodo : (state,action:PayloadAction<number>) =>{
       const id:number = action.payload;
       state.map((e)=>{
         if(e.id===id){

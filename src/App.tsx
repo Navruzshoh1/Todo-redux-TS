@@ -32,6 +32,7 @@ const App = () => {
           <h1 style={{textDecoration:todo.complete?"line-through":"none"}}>{todo.title}</h1>
           <button onClick={() => dispatch(deleteTodo(todo.id))}>Delete</button> 
           <input type="checkbox" onClick={()=>dispatch(completeTodo(todo.id))} />
+          
         </div>
       ))}
     </div>
