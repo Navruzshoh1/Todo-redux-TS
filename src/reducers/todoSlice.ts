@@ -30,10 +30,19 @@ export const slice = createSlice({
     deleteTodo: (state, action) => {
       const id:number = action.payload;
       return state.filter((e) => e.id !== id);
+    },
+    completeTodo : (state,action) =>{
+      const id:number = action.payload;
+      state.map((e)=>{
+        if(e.id===id){
+          e.complete =! e.complete
+        }
+        return e 
+      })
     }
   }
 })
 
-export const {addTodo, deleteTodo} = slice.actions
+export const {addTodo, deleteTodo , completeTodo} = slice.actions
 
 export default slice.reducer

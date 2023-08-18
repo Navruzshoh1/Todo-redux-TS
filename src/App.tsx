@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import { RootState } from "./store/store";
-import { ITodo, addTodo, deleteTodo } from "./reducers/todoSlice";
+import { ITodo, addTodo, deleteTodo , completeTodo } from "./reducers/todoSlice";
 
 const App = () => {
   const todos: ITodo[] = useSelector((state: RootState) => state.todos);
@@ -29,8 +29,9 @@ const App = () => {
       </form>
       {todos.map((todo) => (
         <div key={todo.id}>
-          <h1>{todo.title}</h1>
+          <h1 style={{textDecoration:todo.complete?"line-through":"none"}}>{todo.title}</h1>
           <button onClick={() => dispatch(deleteTodo(todo.id))}>Delete</button> 
+          <input type="checkbox" onClick={()=>dispatch(completeTodo(todo.id))} />
         </div>
       ))}
     </div>
