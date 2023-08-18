@@ -23,10 +23,13 @@ export const slice = createSlice({
   name: 'todos',
   initialState,
   reducers: {
-    
+    addTodo: (state, action) => {
+      const { id, text } = action.payload;
+      state.push({ id, title: text, complete: false });
+    }
   }
 })
 
-export const {} = slice.actions
+export const {addTodo} = slice.actions
 
 export default slice.reducer
