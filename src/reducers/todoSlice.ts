@@ -26,10 +26,14 @@ export const slice = createSlice({
     addTodo: (state, action) => {
       const { id, text } = action.payload;
       state.push({ id, title: text, complete: false });
+    },
+    deleteTodo: (state, action) => {
+      const id:number = action.payload;
+      return state.filter((e) => e.id !== id);
     }
   }
 })
 
-export const {addTodo} = slice.actions
+export const {addTodo, deleteTodo} = slice.actions
 
 export default slice.reducer
